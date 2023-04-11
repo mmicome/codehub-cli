@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+if [ ! -d "/dev/tty" ]; then
+exec scripts/commitizen/prepare-commit-msg.cmd
+else
+exec < /dev/tty
+fi
+npx cz --hook || true

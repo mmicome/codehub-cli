@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "moduleDetection": "force",
+    "target": "ES2020",
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@constants/*": ["src/constants/*"],
+      "@lib/*": ["src/lib/*"],
+      "@test/*": ["src/test/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "tsc-alias": {
+    "verbose": false
+  },
+  "include": ["./**/*.mts", "./**/*.ts"],
+  "exclude": ["dist"]
+}

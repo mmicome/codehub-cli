@@ -1,0 +1,96 @@
+{
+  "name": "@microhub/codehub-cli",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "description": "",
+  "exports": "./dist/src/index.mjs",
+  "main": "src/index.ts",
+  "publishConfig": {
+    "main": "dist/src/index.mjs",
+    "typings": "dist/src/index.d.ts"
+  },
+  "files": [
+    "dist/src",
+    "dist/bin"
+  ],
+  "bin": {
+    "codehub": "./dist/bin/www.js"
+  },
+  "scripts": {
+    "build": "pnpm run clear && pnpm run lint && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "test": "ts-node -r tsconfig-paths/register ./bin/www.ts create .test",
+    "lint": "eslint --ext .js,.mts ./src",
+    "fix": "eslint --ext .js,.mts --fix ./src",
+    "commit": "cz",
+    "clear": "rimraf ./dist",
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "release": "pnpm build && pnpm release:only",
+    "release:only": "changeset publish --registry=https://registry.npmjs.com/",
+    "publish": "pnpm run changeset && pnpm run changeset:version && pnpm run commit && pnpm run build && pnpm run release",
+    "changeset": "changeset",
+    "changeset:version": "cross-env GITHUB_TOKEN=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 changeset version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmicome/codehub-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmicome/codehub-cli/issues"
+  },
+  "lint-staged": {
+    "*": "prettier --write --cache --ignore-unknown",
+    "*.ts": "npm run fix"
+  },
+  "homepage": "https://github.com/mmicome/codehub-cli#readme",
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.1",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.36.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "nodemon": "^2.0.21",
+    "nyc": "^15.1.0",
+    "prettier": "2.8.7",
+    "rimraf": "^4.4.1",
+    "semver": "^7.3.8",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.4",
+    "tsconfig-paths": "^4.1.2",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=14.16",
+    "pnpm": ">=3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@octokit/core": "^4.2.0",
+    "axios": "^1.3.5",
+    "commander": "^10.0.0",
+    "consolidate": "^0.16.0",
+    "download-git-repo": "^3.0.2",
+    "ejs": "^3.1.9",
+    "inquirer": "^9.1.5",
+    "metalsmith": "^2.5.1",
+    "ncp": "^2.0.0",
+    "ora": "^6.3.0",
+    "shelljs": "^0.8.5"
+  }
+}

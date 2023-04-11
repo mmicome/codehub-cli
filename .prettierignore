@@ -1,0 +1,16 @@
+# Ignore artifacts:
+build/
+dist/
+temp/
+output/
+coverage/
+node_modules/
+.*
+*.log
+*.lock
+*.opts
+
+*/CHANGELOG.md
+LICENSE.md
+pnpm-lock.yaml
+pnpm-workspace.yaml

@@ -1,1 +1,1 @@
-# codehub-cli
+# @microhub/codehub-cli
